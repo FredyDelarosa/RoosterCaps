@@ -3,7 +3,8 @@ import bodyParser from 'body-parser';
 import * as dotenv from 'dotenv';
 
 // Importar rutas de módulos
-import employeeRoutes from './employee/routes/employeeRoutes';
+import userRoutes from './user/routes/userRoutes';
+import productRoutes from './product/routes/productRoutes';
 
 // Importar middlewares compartidos
 import { errorHandler } from './shared/middlewares/errorHandler';
@@ -21,7 +22,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Rutas de los módulos
-app.use('/api/employee', employeeRoutes);
+app.use('/api/user', userRoutes);
+app.use('/api/product', productRoutes);
 
 // Middleware para manejar rutas no encontradas
 app.use(notFoundHandler);
@@ -33,3 +35,4 @@ app.use(errorHandler);
 app.listen(port, () => {
   console.log(`Servidor corriendo en http://localhost:${port}`);
 });
+
